@@ -4128,7 +4128,7 @@ function! s:GrepSubcommand(line1, line2, range, bang, mods, options) abort
   let dir = a:options.dir
   exe s:DirCheck(dir)
   let listnr = a:line1 == 0 ? a:line1 : a:line2
-  let cmd = ['--no-pager', 'grep', '-n', '--no-color', '--full-name']
+  let cmd = ['--no-pager', get(g:,'fugitive_grep_command','grep'), '-n', '--no-color', '--full-name']
   if fugitive#GitVersion(2, 19)
     call add(cmd, '--column')
   endif
